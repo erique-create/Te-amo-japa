@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Julia ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #243b55 0%, #141e30 35%, #120b1d 70%, #090909 100%);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, white, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, white, transparent),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 230px 90px, white, transparent);
+      background-repeat: repeat;
+      background-size: 250px 250px;
+      animation: moveStars 90s linear infinite;
+      opacity: 0.7;
+      z-index: -3;
+    }
+
+    @keyframes moveStars {
+      from {
+        transform: translateY(0px);
+      }
+      to {
+        transform: translateY(-250px);
+      }
+    }
+
+    .moon {
+      position: fixed;
+      top: 70px;
+      right: 60px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #fff7dc 0%, #ffeeb0 60%, rgba(255,255,255,0.1) 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 60px rgba(255,255,220,0.35);
+      z-index: -2;
+      opacity: 0.9;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffd3e3;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      margin-bottom: 50px;
+    }
+
+    .text-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      padding: 35px;
+      border-radius: 25px;
+      line-height: 1.9;
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.05);
+    }
+
+    .countdown {
+      margin-top: 40px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 25px;
+      border-radius: 25px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      margin-bottom: 50px;
+    }
+
+    .countdown h3 {
+      color: #ffb7d5;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    #timer {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff2f7;
+      line-height: 1.6;
+    }
+
+    .surprise-btn {
+      margin-top: 25px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 999px;
+      background: #ff8bb8;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .surprise-btn:hover {
+      transform: scale(1.05);
+      background: #ff6ea8;
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 25px;
+      line-height: 1.8;
+      font-size: 1rem;
+      color: #ffe7f0;
+    }
+
+    .mini-games {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .game-box {
+      background: rgba(255,255,255,0.05);
+      border-radius: 22px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .game-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      background: #ff8bb8;
+      color: white;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 80px;
+      opacity: 0.7;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop id="bgMusic">
+    <source src="LINK_DA_MUSICA.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="stars"></div>
+  <div class="moon"></div>
+
+  <div class="container">
+
+    <h1>Para Julia ❤️</h1>
+
+    <p class="subtitle">
+      feito com saudade, amor e cada pensamento que eu tive em você.
+    </p>
+
+    <div class="countdown">
+      <h3>Contagem até eu finalmente te ver de novo ✨</h3>
+      <div id="timer"></div>
+    </div>
+
+    <div class="text-box">
+      Eu nem sei explicar direito o quanto eu senti tua falta.
+      <br><br>
+      Tem noites em que eu fico imaginando teu abraço,
+      tua risada,
+      teu jeito,
+      teu olhar perto de mim de novo.
+      <br><br>
+      E toda vez que eu penso nisso,
+      meu coração parece esquecer como fica calmo.
+      <br><br>
+      Porque mesmo depois de tanto tempo,
+      eu continuo olhando pra você com aquele mesmo brilho do começo.
+      <br><br>
+      Você ainda consegue fazer meu dia ficar melhor só existindo.
+      E sinceramente?
+      eu nunca vou cansar disso.
+      <br><br>
+      Você virou meu lugar favorito no mundo.
+    </div>
+
+    <button class="surprise-btn" onclick="showMessage()">
+      clica aqui, meu amor ✨
+    </button>
+
+    <div class="hidden-message" id="secretMessage">
+      Mesmo longe,
+      você ainda consegue fazer meu coração acelerar.
+      <br><br>
+      E quando julho chegar,
+      eu só quero te abraçar por muito tempo
+      como se o mundo inteiro tivesse parado só pra aquele momento.
+      <br><br>
+      Obrigado por existir na minha vida, Julia.
+      <br><br>
+      Eu te amo mais do que qualquer texto conseguiria explicar.
+    </div>
+
+    <div class="mini-games">
+      <div class="game-box">
+        <h3>💘 Clique no coração</h3>
+        <p>Cada clique libera uma frase diferente.</p>
+        <button onclick="heartGame()">❤️ clicar</button>
+        <div id="heartMessage" style="margin-top:15px; line-height:1.7;"></div>
+      </div>
+
+      <div class="game-box">
+        <h3>🌌 Escolha uma estrela</h3>
+        <p>Uma delas guarda um recado especial.</p>
+        <button onclick="starMessage()">⭐ escolher</button>
+        <div id="starText" style="margin-top:15px; line-height:1.7;"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      feito exclusivamente pra garota que mora no meu coração.
+    </div>
+
+  </div>
+
+  <script>
+
+    const music = document.getElementById("bgMusic");
+
+    music.volume = 0.15;
+
+    document.addEventListener("click", () => {
+      music.play();
+    });
+
+    const reunionDate = new Date('2026-07-01T00:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = reunionDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+
+      document.getElementById('timer').innerHTML = `${days} dias • ${hours} horas • ${minutes} minutos`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function showMessage() {
+      document.getElementById('secretMessage').style.display = 'block';
+    }
+
+    const heartPhrases = [
+      'Você continua sendo minha pessoa favorita.',
+      'Eu contaria os dias infinitas vezes só pra te ver.',
+      'Te amar ficou tão natural quanto respirar.',
+      'Mesmo longe, você ainda faz meu coração ficar leve.'
+    ];
+
+    function heartGame() {
+      const random = Math.floor(Math.random() * heartPhrases.length);
+      document.getElementById('heartMessage').innerHTML = heartPhrases[random];
+    }
+
+    const starPhrases = [
+      'Em qualquer universo, eu escolheria você.',
+      'Você transformou saudade em algo bonito.',
+      'A distância nunca conseguiu diminuir o que eu sinto.',
+      'Meu lugar favorito sempre vai ser perto de você.'
+    ];
+
+    function starMessage() {
+      const random = Math.floor(Math.random() * starPhrases.length);
+      document.getElementById('starText').innerHTML = starPhrases[random];
+    }
+
+  </script>
+
+</body>
+  </html>
